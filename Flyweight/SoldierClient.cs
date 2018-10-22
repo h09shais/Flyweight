@@ -2,20 +2,19 @@
 {
     public class SoldierClient
     {
-        private ISoldier soldier = SoldierFactory.GetSoldier();
-        private int currentLocationX;
-        private int currentLocationY;
-        public void MoveSoldier(int newLocationX, int newLocationY)
+        private readonly ISoldier _soldier = SoldierFactory.GetSoldier();
+        private int _currentX;
+        private int _currentY;
+        public void MoveSoldier(int newX, int newY)
         {
 
             // here the actual rendering is handled by the flyweight object 
-            this.soldier.moveSoldier(this.currentLocationX, this.currentLocationY, newLocationX, newLocationY);
+            this._soldier.MoveSoldier(this._currentX, this._currentY, newX, newY);
 
             // this object is responsible for maintaining the state
             // that is extrinsic to the flyweight
-            this.currentLocationX = newLocationX;
-
-            this.currentLocationY = newLocationY;
+            this._currentX = newX;
+            this._currentY = newY;
         }
     }
 }
